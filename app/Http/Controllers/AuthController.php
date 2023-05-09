@@ -26,7 +26,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         return $this->success([
-            'user' => $user,
+            'user' => $user->name,
             'token' => $user->createToken('API Token of '. $user->name)->plainTextToken
         ]);
     }
@@ -37,8 +37,11 @@ class AuthController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'role_name' => $request->role_name,
         ]);
 
         return $this->success([
