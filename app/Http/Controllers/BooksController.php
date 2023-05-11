@@ -38,8 +38,9 @@ class BooksController extends Controller
             'user_id' => Auth::user()->id,
             'title' => $request->title,
             'published' => $request->published,
+            'author' => $request->author,
             'description' => $request->description,
-            'isbn' => $request->isbn
+            'isbn' => $request->isbn,
         ]);
 
         return new BooksResource($book);

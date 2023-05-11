@@ -2,8 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +25,6 @@ Route::post('/register', ['App\Http\Controllers\AuthController', 'register']);
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('/books', 'App\Http\Controllers\BooksController');
+    Route::resource('/users', 'App\Http\Controllers\UsersController');
     Route::post('/logout', ['App\Http\Controllers\AuthController', 'logout']);
 });
