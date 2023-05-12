@@ -21,7 +21,7 @@ class BooksController extends Controller
         $order = $request->query('order') ? $request->query('order') : 'desc';
 
         return BooksResource::collection(
-            Book::select('id', 'user_id', 'title', 'published', 'description', 'isbn', 'created_at', 'updated_at')
+            Book::select('id', 'user_id', 'title', 'author', 'published', 'description', 'isbn', 'created_at', 'updated_at')
                 ->orderBy('created_at', $order)
                 ->paginate(5)
         );
