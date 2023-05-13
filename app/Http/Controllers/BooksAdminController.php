@@ -12,15 +12,6 @@ class BooksAdminController extends Controller
 {
     use HttpResponses;
 
-    // public function index(Request $request)
-    // {
-    //     $order =$request->query('order') ? $request->query('order') : 'desc';
-
-    //     return BooksResource::collection(Book::select('id', 'title', 'published', 'author', 'description', 'isbn')
-    //         ->orderBy('created_at', $order)
-    //         ->paginate(10));
-    // }
-
     public function index(Request $request)
     {
         $order = $request->query('order') ? $request->query('order') : 'desc';
@@ -28,9 +19,22 @@ class BooksAdminController extends Controller
         return BooksResource::collection(
             Book::select('id', 'title', 'author', 'published', 'description', 'isbn', 'created_at', 'updated_at')
                 ->orderBy('created_at', $order)
-                ->paginate(5)
+                ->paginate(10)
         );
     }
+
+    public function search($books)
+    {
+        return BooksResource::collection(Book::where('title', 'like','%'.$books.'%')->get()); 
+    }
+
+    // public function search($books, Request $request)
+    // {
+    //     return BooksResource::collection(
+    //         Book::where('title', 'like', '%' . $books . '%')->get()
+    //             ->paginate(10)
+    //     );
+    // }
 
     public function show(string $id)
     {

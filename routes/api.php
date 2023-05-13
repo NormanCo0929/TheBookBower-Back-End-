@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/users', ['App\Http\Controllers\UsersController', 'store']);
     Route::patch('/users/{id}', ['App\Http\Controllers\UsersController', 'update']);
     Route::delete('/users/{id}', ['App\Http\Controllers\UsersController', 'destroy']);
+    Route::get('search/{users}', ['App\Http\Controllers\UsersController', 'search']);
 
     // <---------------Book Management CRUD Functions--------------->
     Route::get('/books', ['App\Http\Controllers\BooksAdminController', 'index']);
@@ -37,6 +38,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::patch('/books/{id}', ['App\Http\Controllers\BooksAdminController', 'update']);
     Route::post('/books', ['App\Http\Controllers\BooksAdminController', 'store']);
     Route::delete('/books/{id}', ['App\Http\Controllers\BooksAdminController', 'destroy']);
+    Route::get('search/{books}', ['App\Http\Controllers\BooksAdminController', 'search']);
 
     Route::post('/logout', ['App\Http\Controllers\AuthController', 'logout']);
 });

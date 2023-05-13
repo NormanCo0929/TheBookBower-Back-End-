@@ -22,6 +22,11 @@ class UsersController extends Controller
             ->paginate(10));
     }
 
+    public function search($users)
+    {
+        return UserResource::collection(User::where('name', 'like','%'.$users.'%')->get()); 
+    }
+
     public function show(string $id)
     {
         return response(UserResource::make(User::find($id)), 200);
