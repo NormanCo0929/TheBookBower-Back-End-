@@ -25,6 +25,14 @@ Route::post('/register', ['App\Http\Controllers\AuthController', 'register']);
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('/books', 'App\Http\Controllers\BooksController');
-    Route::resource('/users', 'App\Http\Controllers\UsersController');
+
+    // <---------------User Management CRUD Functions--------------->
+    Route::get('/users', ['App\Http\Controllers\UsersController', 'index']);
+    Route::get('/users/{id}', ['App\Http\Controllers\UsersController', 'show']);
+    Route::post('/users', ['App\Http\Controllers\UsersController', 'store']);
+    Route::patch('/users/{id}', ['App\Http\Controllers\UsersController', 'update']);
+    Route::delete('/users/{id}', ['App\Http\Controllers\UsersController', 'delete']);
+
+
     Route::post('/logout', ['App\Http\Controllers\AuthController', 'logout']);
 });
