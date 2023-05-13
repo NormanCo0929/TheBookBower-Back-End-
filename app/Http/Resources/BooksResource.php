@@ -24,11 +24,6 @@ class BooksResource extends JsonResource
                 'isbn' => $this->isbn,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at
-            ],
-            'borrower' => [
-                'id' => (string)$this->user->id,
-                'user name' => $this->user->name,
-                'user email' => $this->user->email
             ]
         ];
     }

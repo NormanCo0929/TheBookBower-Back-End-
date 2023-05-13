@@ -24,15 +24,19 @@ Route::post('/register', ['App\Http\Controllers\AuthController', 'register']);
 
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::resource('/books', 'App\Http\Controllers\BooksController');
-
     // <---------------User Management CRUD Functions--------------->
     Route::get('/users', ['App\Http\Controllers\UsersController', 'index']);
     Route::get('/users/{id}', ['App\Http\Controllers\UsersController', 'show']);
     Route::post('/users', ['App\Http\Controllers\UsersController', 'store']);
     Route::patch('/users/{id}', ['App\Http\Controllers\UsersController', 'update']);
-    Route::delete('/users/{id}', ['App\Http\Controllers\UsersController', 'delete']);
+    Route::delete('/users/{id}', ['App\Http\Controllers\UsersController', 'destroy']);
 
+    // <---------------Book Management CRUD Functions--------------->
+    Route::get('/books', ['App\Http\Controllers\BooksAdminController', 'index']);
+    Route::get('/books/{id}', ['App\Http\Controllers\BooksAdminController', 'show']);
+    Route::patch('/books/{id}', ['App\Http\Controllers\BooksAdminController', 'update']);
+    Route::post('/books', ['App\Http\Controllers\BooksAdminController', 'store']);
+    Route::delete('/books/{id}', ['App\Http\Controllers\BooksAdminController', 'destroy']);
 
     Route::post('/logout', ['App\Http\Controllers\AuthController', 'logout']);
 });

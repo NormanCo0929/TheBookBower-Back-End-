@@ -20,7 +20,6 @@ class BookFactory extends Factory
         $datetime = fake()->date() . ' ' . fake()->time();
 
         return [
-            'user_id' => User::all()->random()->id,
             'title' => $this->faker->realText($manNbChars = 30),
             'published' => $datetime,
             'author' => fake()->name(),
