@@ -16,9 +16,9 @@ ENV APP_DEBUG false
 ENV DB_CONNECTION=pgsql
 ENV DB_HOST=dpg-chgivae7avjbbjqlgppg-a
 ENV DB_PORT=5432
-ENV DB_DATABASE=the_book_bower_back_end
-ENV DB_USERNAME=root
-ENV DB_PASSWORD=jPa9E7BLofYW9GvxLEGEVXU4iQLrZirS
+ENV DB_DATABASE the_book_bower_back_end
+ENV DB_USERNAME root
+ENV DB_PASSWORD jPa9E7BLofYW9GvxLEGEVXU4iQLrZirS
 
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
