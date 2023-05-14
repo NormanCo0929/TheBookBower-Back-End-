@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 //Public Routes
 Route::post('/login', ['App\Http\Controllers\AuthController', 'login']);
 Route::post('/register', ['App\Http\Controllers\AuthController', 'register']);
+Route::get('/books', ['App\Http\Controllers\BooksAdminController', 'index']);
 
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -33,7 +34,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('search/{users}', ['App\Http\Controllers\UsersController', 'search']);
 
     // <---------------Book Management CRUD Functions--------------->
-    Route::get('/books', ['App\Http\Controllers\BooksAdminController', 'index']);
+    // Route::get('/books', ['App\Http\Controllers\BooksAdminController', 'index']);
     Route::get('/books/{id}', ['App\Http\Controllers\BooksAdminController', 'show']);
     Route::patch('/books/{id}', ['App\Http\Controllers\BooksAdminController', 'update']);
     Route::post('/books', ['App\Http\Controllers\BooksAdminController', 'store']);
