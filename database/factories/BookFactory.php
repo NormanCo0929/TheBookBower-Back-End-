@@ -21,7 +21,7 @@ class BookFactory extends Factory
 
         return [
             'title' => $this->faker->realText($manNbChars = 30),
-            'published' => $datetime,
+            'published' => fake()->date(),
             'author' => fake()->name(),
             'description' => $this->faker->realText($maxNbChar = 100),
             'isbn' => $this->faker->isbn10(),
